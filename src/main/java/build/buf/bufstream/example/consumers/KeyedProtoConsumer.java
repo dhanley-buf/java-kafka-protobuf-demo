@@ -24,7 +24,7 @@ public class KeyedProtoConsumer {
             props.put(ConsumerConfig.AUTO_OFFSET_RESET_CONFIG, "earliest");
             props.put(KafkaProtobufSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "https://bufdemo.buf.dev/integrations/confluent/bufstream-examples");
             props.put(KafkaProtobufSerializerConfig.BASIC_AUTH_CREDENTIALS_SOURCE, "USER_INFO");
-            props.put(KafkaProtobufSerializerConfig.USER_INFO_CONFIG, "dhanley-bot:44655f5249e20cf1c9a407a4d03bd2e7ef7c5834d74f1656860aceddb3dbab6b");
+            props.put(KafkaProtobufSerializerConfig.USER_INFO_CONFIG, "username:password");
 
             try (Consumer<String, DynamicMessage> consumer = new KafkaConsumer<>(props)) {
                 String topic = "invoice";
