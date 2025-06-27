@@ -14,7 +14,7 @@ import java.time.Duration;
 import java.util.Collections;
 import java.util.Properties;
 
-public class KeyedProtoConsumer {
+public class ProtoConsumer {
         public static void main(String[] args) {
             Properties props = new Properties();
             props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG, "localhost:9092");

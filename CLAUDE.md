@@ -24,7 +24,7 @@ This project demonstrates Kafka producers using Buf-generated Protocol Buffers i
 ### Key Components
 - **Invoice Schema**: Defined in `Invoice.proto` with `Invoice` and `LineItem` messages
 - **Producer Example**: `ProtoProducer` - Protobuf-serialized messages with Confluent Schema Registry integration, generates randomized invoice data
-- **Consumer Example**: `KeyedProtoConsumer` - Protobuf message consumer
+- **Consumer Example**: `ProtoConsumer` - Protobuf message consumer
 
 ### Protocol Buffer Generation
 - Uses Buf CLI for schema management and code generation
