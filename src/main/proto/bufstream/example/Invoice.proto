@@ -1,0 +1,43 @@
+// Copyright 2020-2025 Buf Technologies, Inc.
+//
+// Licensed under the Apache License, Version 2.0 (the "License");
+// you may not use this file except in compliance with the License.
+// You may obtain a copy of the License at
+//
+//      http://www.apache.org/licenses/LICENSE-2.0
+//
+// Unless required by applicable law or agreed to in writing, software
+// distributed under the License is distributed on an "AS IS" BASIS,
+// WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+// See the License for the specific language governing permissions and
+// limitations under the License.
+syntax = "proto3";
+
+package bufstream.example.invoice.v1;
+
+import "buf/confluent/v1/extensions.proto";
+
+// Invoice is a collection of goods or services sold to a customer.
+message Invoice {
+  string invoice_id = 1;
+  string customer_id = 2;
+  repeated LineItem line_items = 3;
+
+  option (buf.confluent.v1.subject) = {
+    instance_name: "bufstream-examples",
+    name: "invoice-value",
+  };
+}
+
+// LineItem is an individual good or service added to an invoice.
+message LineItem {
+  string line_item_id = 1;
+  string product_id = 2;
+  uint64 quantity = 3;
+  uint64 unit_price = 4;
+
+  option (buf.confluent.v1.subject) = {
+    instance_name: "bufstream-examples",
+    name: "line-item-value",
+  };
+}

@@ -1,0 +1,3 @@
+build/buf/bufstream/example/producers/KeyedProducer.class
+build/buf/bufstream/example/producers/SimplestProducer.class
+build/buf/bufstream/example/producers/KeyedProtoBufProducer.class

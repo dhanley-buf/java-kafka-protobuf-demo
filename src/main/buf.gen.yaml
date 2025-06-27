@@ -1,0 +1,11 @@
+version: v2
+managed:
+  enabled: true
+  override:
+  - file_option: java_package_prefix
+    value: build.buf
+    #module: buf.build/foo/bar
+
+plugins:
+  - remote: buf.build/protocolbuffers/java:v25.6
+    out: gen
