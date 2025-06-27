@@ -38,8 +38,38 @@ This project demonstrates Kafka producers using Buf-generated Protocol Buffers i
 - Buf-generated protobuf dependencies from custom repository
 - Java 17 target version
 
-### Running the Producer
-The `ProtoProducer` class contains a main method and can be run directly. It expects:
+### Running the Applications
+Both `ProtoProducer` and `ProtoConsumer` classes contain main methods and can be run directly. They expect:
 - Kafka broker at `localhost:9092`
-- Confluent Schema Registry integration for protobuf producers
+- Confluent Schema Registry integration for protobuf producers/consumers
 - Appropriate authentication credentials for schema registry
+
+## Environment Configuration
+
+### Required Environment Variables
+
+Both applications require the following environment variable to be set:
+
+- **`USER_INFO_CONFIG`**: Schema Registry authentication credentials in the format `username:password`
+
+### Setting Environment Variables
+
+**For development (local):**
+```bash
+export USER_INFO_CONFIG="your-username:your-password"
+```
+
+**For production/deployment:**
+Set the environment variable through your deployment platform (Docker, Kubernetes, etc.)
+
+**For IDE/IntelliJ:**
+Set the environment variable in your run configuration.
+
+### Security Benefits
+
+- **No hardcoded credentials** in source code
+- **Safe to commit** all code to version control
+- **Environment-specific configuration** without code changes
+- **Follows 12-factor app principles**
+
+If the `USER_INFO_CONFIG` environment variable is not set, both applications will log an error and exit gracefully.

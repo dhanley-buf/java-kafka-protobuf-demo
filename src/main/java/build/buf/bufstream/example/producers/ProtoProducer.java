@@ -80,7 +80,13 @@ public class ProtoProducer {
         props.put(KafkaProtobufSerializerConfig.AUTO_REGISTER_SCHEMAS, false);
         props.put(KafkaProtobufSerializerConfig.SCHEMA_REGISTRY_URL_CONFIG, "https://bufdemo.buf.dev/integrations/confluent/bufstream-examples");
         props.put(KafkaProtobufSerializerConfig.BASIC_AUTH_CREDENTIALS_SOURCE, "USER_INFO");
-        props.put(KafkaProtobufSerializerConfig.USER_INFO_CONFIG, "username:password");
+        //user info config takes the form 'user:token' - read from environment variable
+        String userInfo = System.getenv("USER_INFO_CONFIG");
+        if (userInfo == null || userInfo.isEmpty()) {
+            logger.severe("USER_INFO_CONFIG environment variable is required but not set");
+            System.exit(1);
+        }
+        props.put(KafkaProtobufSerializerConfig.USER_INFO_CONFIG, userInfo);
         
         Runtime.getRuntime().addShutdownHook(new Thread(() -> {
             logger.info("Shutdown requested");
