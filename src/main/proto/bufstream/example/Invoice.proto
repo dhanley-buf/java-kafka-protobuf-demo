@@ -36,8 +36,5 @@ message LineItem {
   uint64 quantity = 3;
   uint64 unit_price = 4;
 
-  option (buf.confluent.v1.subject) = {
-    instance_name: "bufstream-examples",
-    name: "line-item-value",
-  };
+
 }
